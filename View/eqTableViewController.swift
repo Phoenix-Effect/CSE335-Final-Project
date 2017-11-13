@@ -30,10 +30,15 @@ class eqTableViewController: UITableViewController {
         
         let earthquake = earthquakes[indexPath.row]
         cell.title.text = earthquake.title
-        cell.time.text = String(earthquake.time)
+        cell.time.text = makeDateNice(timestamp: earthquake.time)
         cell.magnitude.text = String(earthquake.magnitude)
  
         return cell
+    }
+    
+    //sets cell height
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65.0;//Choose your custom row height
     }
     
 
@@ -60,5 +65,19 @@ class eqTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //takes in unix timestamp and makes it look nice
+    func makeDateNice(timestamp: Int64) -> String{
+        let timestamp:Double = Double(timestamp) / 1000
+        let date = Date(timeIntervalSince1970: timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        let strDate = dateFormatter.string(from: date)
+        return strDate
+        
+    }
 
 }
