@@ -56,15 +56,21 @@ class eqTableViewController: UITableViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+         if(segue.identifier == "eqDetails"){
+            let selected:IndexPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
+            if let eqDetailController:eqDetailViewController = segue.destination as? eqDetailViewController{
+                eqDetailController.selectedEq = selected
+            }
+        }
     }
-    */
+    
     
     //takes in unix timestamp and makes it look nice
     func makeDateNice(timestamp: Int64) -> String{
