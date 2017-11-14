@@ -33,15 +33,22 @@ class eqDetailViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "eqWebView"){
+            let eq = eqData[(selectedEq?.row)!]
+            let urlToSend = eq.url
+            if let eqWebController:eqWebViewController = segue.destination as? eqWebViewController{
+                eqWebController.urlToLoad = urlToSend!
+            }
+        }
     }
-    */
+    
     
     //this function sets up the map
     func setupMap(){
