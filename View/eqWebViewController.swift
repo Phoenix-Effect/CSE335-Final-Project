@@ -9,8 +9,9 @@
 import UIKit
 import WebKit
 
-class eqWebViewController: UIViewController {
+class eqWebViewController: UIViewController, WKNavigationDelegate {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     var urlToLoad:String = ""
     @IBOutlet weak var webView: WKWebView!
     
@@ -18,6 +19,8 @@ class eqWebViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        spinner.hidesWhenStopped = true
+        spinner.startAnimating()
         print(urlToLoad)
         loadWebsite()
     }
@@ -28,19 +31,16 @@ class eqWebViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("loaded website")
+        self.spinner.stopAnimating()
     }
-    */
     
+    //loads the website
     func loadWebsite(){
         let url = URL(string: urlToLoad)
         let request = URLRequest(url: url!)
+        webView.navigationDelegate = (self as! WKNavigationDelegate)
         webView.load(request)
     }
 
