@@ -69,12 +69,19 @@
                                     <action selector="refreshData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="222-uy-wDI"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P4b-XZ-mzd">
+                                <rect key="frame" x="177" y="298" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="JMO-Ny-G8N"/>
                     <connections>
+                        <outlet property="eqListButton" destination="UNf-lW-pch" id="h6S-ID-kHy"/>
+                        <outlet property="eqMapButton" destination="jgu-qR-Uw9" id="1aH-Oa-BLW"/>
+                        <outlet property="spinner" destination="P4b-XZ-mzd" id="ee5-xh-PWN"/>
                         <outlet property="statusLabel" destination="9Hg-qv-cB1" id="XHs-Gq-dSM"/>
                     </connections>
                 </viewController>
@@ -157,7 +164,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUS-ht-Bam" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="626.53673163418296"/>
+            <point key="canvasLocation" x="1042" y="443"/>
         </scene>
         <!--Eq Map View Controller-->
         <scene sceneID="NUu-yn-HrY">
@@ -181,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DrL-64-N3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="-239.73013493253376"/>
+            <point key="canvasLocation" x="1041" y="-225"/>
         </scene>
         <!--Eq Detail View Controller-->
         <scene sceneID="GXV-GZ-owu">
@@ -276,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMJ-iD-qo2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2172" y="122"/>
+            <point key="canvasLocation" x="1890" y="122"/>
         </scene>
         <!--Eq Web View Controller-->
         <scene sceneID="mCQ-E3-jDJ">
@@ -295,17 +302,22 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NfJ-C4-Fz0">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QcP-rn-K6o"/>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="NfJ-C4-Fz0" id="Tej-n5-80l"/>
                         <outlet property="webView" destination="tQ8-hl-WVZ" id="c7Z-0Z-sN0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7I-op-y2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3175" y="627"/>
+            <point key="canvasLocation" x="2694" y="122"/>
         </scene>
     </scenes>
     <resources>

@@ -11,7 +11,7 @@ import MapKit
 
 class eqMapViewController: UIViewController {
     
-    var eqModelObject = earthquakesModel()
+    var eqModelObject = earthquakesModel.sharedInstance
     var earthquakes:[EarthquakeEntitiy] = []
     @IBOutlet weak var mapView: MKMapView!
     

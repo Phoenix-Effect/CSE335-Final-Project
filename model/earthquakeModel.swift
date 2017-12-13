@@ -11,25 +11,37 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
-class earthquakesModel{
+final class earthquakesModel{
     
     var earthquakesArray:[EarthquakeEntitiy] = []
-
+    
+    
+    //implementing singleton to not have too many accesses to coredata
+    static let sharedInstance: earthquakesModel = {
+        let instance = earthquakesModel()
+        instance.refreshEarthquake()
+        return instance
+    }()
+    private init(){}
+    
     //get data
     func getEQData() -> [EarthquakeEntitiy] {
-        
-        do{
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            earthquakesArray  = try context.fetch(EarthquakeEntitiy.fetchRequest())
-        } catch{
-            print("fetching from core data failed")
+        print("getData called")
+        if(earthquakesArray.count == 0){
+            do{
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                earthquakesArray  = try context.fetch(EarthquakeEntitiy.fetchRequest())
+                print("accessed coreData")
+            } catch{
+                print("fetching from core data failed")
+            }
         }
         
         return earthquakesArray
     }
     
     //loads from coreData to local array
-    func loadEarthquake(){
+    func refreshEarthquake(){
        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do{
             earthquakesArray = try context.fetch(EarthquakeEntitiy.fetchRequest())
@@ -39,9 +51,8 @@ class earthquakesModel{
     }
     
     //updates the coredata with new stuff
-    func updateData(){
+    func updateData(completionHandler:@escaping(Bool)->()){
         print("going into fetch")
-        
         let mOC = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let url = URL(string: "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
         URLSession.shared.dataTask(with:url!, completionHandler: {(data, response, error) in
@@ -74,6 +85,9 @@ class earthquakesModel{
                     (UIApplication.shared.delegate as! AppDelegate).saveContext()
                 }
             }
+            print("data fetched")
+            self.refreshEarthquake()
+            completionHandler(true)
         }).resume()
         
     }
@@ -87,9 +101,8 @@ class earthquakesModel{
         do {
             try managedObjectContext.execute(deleteRequest)
             try managedObjectContext.save()
-            
         }
-        catch let _ as NSError {
+        catch _ as NSError {
             // Handle error
         }
 

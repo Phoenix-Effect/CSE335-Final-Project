@@ -11,7 +11,7 @@ import UIKit
 class eqTableViewController: UITableViewController {
     
     @IBOutlet var eqTableView: UITableView!
-    var eqModelObject = earthquakesModel()
+    var eqModelObject = earthquakesModel.sharedInstance
     var earthquakes:[EarthquakeEntitiy] = []
     
     //returns number of earthquakes

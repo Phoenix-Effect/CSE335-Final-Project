@@ -13,7 +13,7 @@ class eqDetailViewController: UIViewController {
     
     var selectedEq:IndexPath?
     @IBOutlet weak var mapView: MKMapView!
-    var eqData:[EarthquakeEntitiy] = earthquakesModel().getEQData()
+    var eqData:[EarthquakeEntitiy] = earthquakesModel.sharedInstance.getEQData()
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
