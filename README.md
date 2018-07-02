@@ -12,8 +12,8 @@ This is an app that I made as my final project for CSE335 - Principle of Mobile 
 ![mvc diagram]( /images/mvc.png )
 
 ### Slides
-<object data="images/Final Presentation.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="images/Final Presentation.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="images/Final Presentation.pdf">Download PDF</a>.</p>
+<object data="images/Final presentation.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="images/Final presentation.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="images/Final presentation.pdf">Download PDF</a>.</p>
     </embed>
 </object>
